@@ -1,32 +1,46 @@
-const ages = [18, 20, 30, 34, 1, 100, 14]
-
-const predicate = (age: number) => {
-    return age > 90;
+export type ManType = {
+    name: string
+    age: number
 }
 
-const oldAges = [100]  // >90
-
-
-type CourseType = {
-    title: string
-    price: number
-}
-
-const courses = [
-    {title: "CSS", price: 110},
-    {title: "JS", price: 200},
-    {title: "REACT", price: 160}
+const people: ManType[] = [
+    {name: 'Andrey Ivanov', age: 33},
+    {name: 'Aleksandr Petrov', age: 22},
+    {name: 'Vasily Popkin', age: 19}
 ]
 
-//<160
-const cheapPredicate = (course: CourseType) => {
-    return course.price < 170
+const dimychTransformator = (man:ManType) => {
+return{
+    stack: ['css, html', 'js', 'tdd', 'react'],
+    firstName: man.name.split(' ')[0],
+    lastName: man.name.split(' ')[1]
+}
 }
 
 
-const cheaperCourses = [
-    {title: "CSS", price: 110},
-    {title: "REACT", price: 160}
+const devs = [
+    {
+        stack: ['css, html', 'js', 'tdd', 'react'],
+        firstName: 'Andrey', lastName: 'Ivanov'
+    },
+    {
+        tack: ['css, html', 'js', 'tdd', 'react'],
+        firstName: 'Aleksandr', lastName: 'Petrov'
+    },
+    {
+        tack: ['css, html', 'js', 'tdd', 'react'],
+        firstName: 'Vasily', lastName: 'Popkin'
+    }
 ]
 
+const dev2 = people.map(dimychTransformator)
+const dev3 = people.map(man =>( {
+        stack: ['css, html', 'js', 'tdd', 'react'],
+        firstName: man.name.split(' ')[0],
+        lastName: man.name.split(' ')[1]
+    }))
 
+const messages = people.map(man => `Hello ${man.name.split(' ')[0]}! Welcome to IT-incubator`)
+export const createGreetingMessage = (people: ManType[])=>{
+    return people.map(man => `Hello ${man.name.split(' ')[0]}! Welcome to IT-incubator`)
+}

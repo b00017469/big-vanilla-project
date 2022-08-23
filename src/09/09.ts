@@ -1,8 +1,10 @@
-let user ={
+type UserType= {
+    name: string
+    age: number
+}
+
+let user:UserType ={
     name: 'Pasha',
     age: 35
 }
 
-function increaceAge(user) {
-    user.age++
-}
